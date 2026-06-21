@@ -24,3 +24,28 @@ button{
 a{
     text-decoration: none;
 }
+.crop-container{
+    width: 500px;
+    text-align: center;
+    margin: 50px auto;
+}
+select{
+    padding: 10px;
+    width: 250px;
+}
+
+#result{
+    width: 350px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    display: none;
+}
+#result p{
+    margin: 12px 0;
+}
+#result{
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
