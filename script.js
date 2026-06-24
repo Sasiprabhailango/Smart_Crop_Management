@@ -1,3 +1,5 @@
+// for crop select 
+
 const cropSelect = document.getElementById("cropSelect");
 
 if(cropSelect){
@@ -5,6 +7,8 @@ if(cropSelect){
         console.log(cropSelect.value);
     });
 }
+
+// Insert the data
 
 const cropData = {
     Rice: {
@@ -121,7 +125,10 @@ const cropData = {
     }
 }
 
+// Display the selected crop 
 const result = document.getElementById("result");
+
+// Details of the Selected crop 
 
 if(cropSelect){
     cropSelect.addEventListener("change",() =>{
@@ -137,5 +144,44 @@ if(cropSelect){
             <p><strong>Harvest:</strong> ${crop.Harvesting}</p>
             `;
         }
+    });
+}
+
+// price details 
+
+const cropName = document.getElementById("cropName");
+const cropPrice = document.getElementById("cropPrice");
+const priceList = document.getElementById("priceList");
+const btn = document.getElementById("btn");
+
+
+let crops = [];
+
+if(btn){
+    btn.addEventListener("click",() =>{
+
+      if(cropName.value === "" || cropPrice.value === ""){
+            alert("Please the crop name and price ");
+          return;
+       }
+     priceList.innerHTML+=`
+     <p>${cropName.value} : ₹${cropPrice.value}</p>
+      `;
+      
+      //  // local storage for values 
+      //   localStorage.setItem("cropName",cropName.value);
+      //   localStorage.setItem("cropPrice",cropPrice.value);
+      
+     const crop = {
+       name:cropName.value,
+       price:cropPrice.value
+     };
+     crops.push(crop);
+     console.log(crops);
+
+
+
+      cropName.value = "";
+      cropPrice.value = "";
     });
 }
