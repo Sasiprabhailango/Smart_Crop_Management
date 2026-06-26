@@ -154,8 +154,16 @@ const cropPrice = document.getElementById("cropPrice");
 const priceList = document.getElementById("priceList");
 const btn = document.getElementById("btn");
 
+// Get data from Local Storage
+let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
-let crops = [];
+
+// Display saved crops when the page loads
+for (let i = 0; i < crops.length; i++) {
+    priceList.innerHTML += `
+        <p>${crops[i].name} : ₹${crops[i].price}</p>
+    `;
+}
 
 if(btn){
     btn.addEventListener("click",() =>{
@@ -164,23 +172,28 @@ if(btn){
             alert("Please the crop name and price ");
           return;
        }
+
+       // Display on the page
+
      priceList.innerHTML+=`
      <p>${cropName.value} : ₹${cropPrice.value}</p>
       `;
-      
-      //  // local storage for values 
-      //   localStorage.setItem("cropName",cropName.value);
-      //   localStorage.setItem("cropPrice",cropPrice.value);
-      
+          
+        // Create object
      const crop = {
        name:cropName.value,
        price:cropPrice.value
      };
+      // Add to array
      crops.push(crop);
-     console.log(crops);
+
+    // Save updated array
+        localStorage.setItem("CropName & price", JSON.stringify(crops));
+     
+        console.log(crops);
 
 
-
+     // Clear inputs
       cropName.value = "";
       cropPrice.value = "";
     });

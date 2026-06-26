@@ -74,3 +74,8 @@ nav a{
     color: green;
     font-weight: bold;
 }
+
+button i{
+    color: green;
+    margin-right: 10px;
+}
