@@ -12,7 +12,7 @@ h1 {
     color: green;
 }
 
-button{
+/* button{
     display: block;
     margin: 15px auto;
     padding: 12px 20px;
@@ -20,7 +20,7 @@ button{
     cursor: pointer;
     border: none;
     border-radius: 8px;
-}
+} */
 a{
     text-decoration: none;
 }
@@ -78,4 +78,19 @@ nav a{
 button i{
     color: green;
     margin-right: 10px;
+}
+.add-btn{
+    display: block;
+    margin: 15px auto;
+    padding: 12px 20px;
+    width: 220px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
+.delete-btn{
+    margin-left: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }

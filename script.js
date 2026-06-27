@@ -159,26 +159,50 @@ let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
 
 // Display saved crops when the page loads
-for (let i = 0; i < crops.length; i++) {
+function displayCrops() {
+   // clear old list
+  priceList.innerHTML="";
+ 
+  // display every crops
+  for(let i=0;i<crops.length;i++){
     priceList.innerHTML += `
-        <p>${crops[i].name} : ₹${crops[i].price}</p>
+        <p>${crops[i].name} : ₹${crops[i].price}
+        <button class="del-button" data-index="${i}">
+         <i class="fa-solid fa-trash"></i>
+         Delete</button>
+        </p>
     `;
 }
+const deleteButton = document.querySelectorAll(".del-button");
+for(let i=0;i<deleteButton.length;i++){
+  deleteButton[i].addEventListener("click",() =>{
 
+       // console.log("Delete button clicked");
+
+     const index = deleteButton[i].dataset.index;
+     // confirm 
+     if(confirm("Are you want to delete this crop ?")){
+     crops.splice(index,1);
+
+        // console.log(crops);
+
+     localStorage.setItem("CropName & price",JSON.stringify(crops));
+     displayCrops();    
+     }
+  });
+}
+}
+displayCrops();
 if(btn){
     btn.addEventListener("click",() =>{
 
-      if(cropName.value === "" || cropPrice.value === ""){
+      if(cropName.value.trim() === "" || cropPrice.value.trim() === ""){
             alert("Please the crop name and price ");
           return;
        }
 
-       // Display on the page
 
-     priceList.innerHTML+=`
-     <p>${cropName.value} : ₹${cropPrice.value}</p>
-      `;
-          
+    
         // Create object
      const crop = {
        name:cropName.value,
@@ -196,5 +220,7 @@ if(btn){
      // Clear inputs
       cropName.value = "";
       cropPrice.value = "";
+
+      displayCrops();
     });
 }
