@@ -157,6 +157,8 @@ const btn = document.getElementById("btn");
 // Get data from Local Storage
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
+// edit variable
+ let editIndex = -1;
 
 // Display saved crops when the page loads
 function displayCrops() {
@@ -167,12 +169,17 @@ function displayCrops() {
   for(let i=0;i<crops.length;i++){
     priceList.innerHTML += `
         <p>${crops[i].name} : ₹${crops[i].price}
+
+            <button class="edit-button">Edit</button>
+
         <button class="del-button" data-index="${i}">
          <i class="fa-solid fa-trash"></i>
          Delete</button>
         </p>
     `;
 }
+// delete crops
+
 const deleteButton = document.querySelectorAll(".del-button");
 for(let i=0;i<deleteButton.length;i++){
   deleteButton[i].addEventListener("click",() =>{
@@ -189,7 +196,21 @@ for(let i=0;i<deleteButton.length;i++){
      }
   });
 }
+  // edit crops 
+
+const editButton = document.querySelectorAll(".edit-button");
+for(let i=0;i<editButton.length;i++){
+  editButton[i].addEventListener("click",() =>{
+   cropName.value=crops[i].name;
+   cropPrice.value=crops[i].price;
+   editIndex=i;
+   console.log(editIndex);
+  });
+  
 }
+}
+
+
 displayCrops();
 if(btn){
     btn.addEventListener("click",() =>{
@@ -206,8 +227,17 @@ if(btn){
        name:cropName.value,
        price:cropPrice.value
      };
+     if(editIndex === -1)
+      {
       // Add to array
-     crops.push(crop);
+        crops.push(crop);
+      }else{
+        // update the existing crop 
+        crops[editIndex] = crop;
+
+        // reset edit mode
+        editIndex = -1;
+      }
 
     // Save updated array
         localStorage.setItem("CropName & price", JSON.stringify(crops));
