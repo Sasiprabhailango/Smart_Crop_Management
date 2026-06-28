@@ -170,7 +170,9 @@ function displayCrops() {
     priceList.innerHTML += `
         <p>${crops[i].name} : ₹${crops[i].price}
 
-            <button class="edit-button">Edit</button>
+            <button class="edit-button" data-index"${i}">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Edit</button>
 
         <button class="del-button" data-index="${i}">
          <i class="fa-solid fa-trash"></i>
