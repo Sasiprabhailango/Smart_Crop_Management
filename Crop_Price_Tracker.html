@@ -11,21 +11,48 @@
        
     
     <nav>
-        <a href="index.html"><i class="fa-solid fa-house fa-lg"></i>Home</a>
-        <a href="Crop_care_Assistant.html"><i class="fa-solid fa-seedling  fa-lg"></i>Crop Care</a>
-        <a href="Crop_Price_Tracker.html"><i class="fa-solid fa-sack-dollar  fa-lg"></i>Price Tracker</a>
-        <a href="DashBoard.html"><i class="fa-solid fa-chart-line fa-lg"></i>DashBoard</a>
+        <div class="logo">
+               🌾 Smart Crop Management
+        </div>
+        <div class="nav-link">
+          <a href="index.html">
+            <i class="fa-solid fa-house fa-lg"></i>
+            Home
+        </a>
+          <a href="Crop_care_Assistant.html">
+            <i class="fa-solid fa-seedling  fa-lg"></i>
+            Crop Care
+        </a>
+          <a href="Crop_Price_Tracker.html">
+            <i class="fa-solid fa-sack-dollar  fa-lg"></i>
+            Price Tracker
+        </a>
+          <a href="DashBoard.html"><i class="fa-solid fa-chart-line fa-lg"></i>
+            Dashboard
+        </a>
+        </div>
     </nav>
 
     
      <div class="crop-container">
-     <h1><i class="fa-solid fa-sack-dollar  fa-lg"></i>Crop Price Tracker</h1>
-     <input  type="text" id="cropName" placeholder="Enter the crop name">
-     <br><br>
-     <input type="number" id="cropPrice" placeholder="Enter the Price">
-     <br><br>
-     <button id="btn" class="add-button">Add Price</button>
 
+         <h1>
+            <i class="fa-solid fa-sack-dollar  fa-lg"></i>
+            Crop Price Tracker
+        </h1>
+         <div class="price-form">
+            <label for="cropName">Crop Name</label>
+            <input  type="text" id="cropName" placeholder="Enter the crop name">
+            
+            <label for="cropPrice">Crop Price</label>
+            <input type="number" id="cropPrice" placeholder="Enter the Crop Price">
+           
+            <button id="btn" class="add-button">
+                 <i class="fa-solid fa-plus"></i>
+                 Add Price
+            </button>
+       </div>
+       <h2>Saved Crop Prices</h2>
      <div id="priceList"></div>
 
 </div>

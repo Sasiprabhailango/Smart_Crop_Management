@@ -167,17 +167,26 @@ function displayCrops() {
  
   // display every crops
   for(let i=0;i<crops.length;i++){
+    // create a card
     priceList.innerHTML += `
-        <p>${crops[i].name} : ₹${crops[i].price}
+    <div class="price-card">
+      <div class="crop-info">
+        <h3>${crops[i].name}</h3>
+        <p> ₹${crops[i].price}</p>
+      </div>
 
-            <button class="edit-button" data-index"${i}">
+      <div class="button-group">
+         <button class="edit-button" data-index="${i}">
             <i class="fa-solid fa-pen-to-square"></i>
-            Edit</button>
+            Edit
+         </button>
 
         <button class="del-button" data-index="${i}">
          <i class="fa-solid fa-trash"></i>
-         Delete</button>
-        </p>
+         Delete
+        </button>
+      </div>
+    </div>
     `;
 }
 // delete crops

@@ -25,9 +25,9 @@ a{
     text-decoration: none;
 }
 .crop-container{
-    width: 500px;
-    text-align: center;
-    margin: 50px auto;
+    width: 85%;
+    max-width: 900px;
+    margin: 40px auto;
 }
 select{
     padding: 10px;
@@ -50,10 +50,12 @@ select{
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 input{
-    width: 250px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid gray;
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    box-sizing:border-box;
 }
 .card{
     background-color: white;
@@ -79,31 +81,72 @@ button i{
     color: green;
     margin-right: 10px;
 }
-.add-btn{
-    display: block;
-    margin: 15px auto;
-    padding: 12px 20px;
-    width: 220px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
+.add-button{
+    margin-top:20px;
+    width:100%;
+    background:green;
+    color:white;
+    font-size:18px;
 }
-.delete-btn{
-    margin-left: 15px;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
+
+.add-button:hover{
+    background:#0a8a0a;
+}
+
+.del-button{
+    background:#ef4444;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
 }
 .edit-button{
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 15px;
+    background:#2d8cff;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
 }
 
 .edit-button:hover{
     background-color: #1976D2;
+}
+.price-form{
+    background: white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.price-form label{
+    display:block;
+    text-align:left;
+    margin:15px 0 8px;
+    font-weight:bold;
+}
+.price-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.crop-info h3{
+    margin:0;
+    font-size:24px;
+}
+
+.crop-info p{
+    margin-top:8px;
+    color:green;
+    font-weight:bold;
+    font-size:18px;
+}
+.button-group{
+    display:flex;
+    gap:15px;
 }
