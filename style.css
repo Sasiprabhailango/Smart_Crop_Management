@@ -255,3 +255,44 @@ button i{
     font-weight:bold;
     color:green;
 }
+.recent-updates{
+    background:white;
+    margin-top:35px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.recent-updates h2{
+    color:green;
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.recent-updates table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.recent-updates th{
+    background:#f4f4f4;
+    padding:15px;
+    text-align:left;
+    font-size:18px;
+}
+
+.recent-updates td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    font-size:17px;
+}
+
+.recent-updates tr:hover{
+    background:#f8fff8;
+}
+.recent-updates td:last-child,
+.recent-updates th:last-child{
+    text-align:right;
+}

@@ -210,12 +210,19 @@ for(let i=0;i<deleteButton.length;i++){
   // edit crops 
 
 const editButton = document.querySelectorAll(".edit-button");
+const priceForm = document.getElementById("priceForm");
 for(let i=0;i<editButton.length;i++){
   editButton[i].addEventListener("click",() =>{
    cropName.value=crops[i].name;
    cropPrice.value=crops[i].price;
    editIndex=i;
-   console.log(editIndex);
+
+   // autoscroll
+   priceForm.scrollIntoView({
+    behavior: "smooth",
+    block :"start"
+   });
+   cropName.focus();
   });
   
 }

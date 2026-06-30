@@ -3,9 +3,12 @@ const totalCrops = document.getElementById("totalCrops");
 const priceEntries = document.getElementById("priceEntries");
 const highestPrice = document.getElementById("highestPrice");
 const averagePrice = document.getElementById("averagePrice");
+const recentList = document.getElementById("recentList");
 
 
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
+
+totalCrops.textContent = crops.length;
 
 priceEntries.textContent = crops.length;
 
@@ -28,3 +31,16 @@ for(let i =0 ;i<avg;i++){
 }
 let average = (total/avg).toFixed(2);
 averagePrice.textContent = "₹" + Number(average).toLocaleString("en-in");
+
+// recent list 
+
+
+recentList.innerHTML = "";
+for(let i=0;i<crops.length;i++){
+    recentList.innerHTML+=`
+    <tr>
+       <td>${crops[i].name}</td>
+       <td>₹${Number(crops[i].price).toLocaleString("en-in")}</td>
+    </tr>
+    `
+}
