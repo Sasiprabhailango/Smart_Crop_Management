@@ -216,6 +216,14 @@ for(let i=0;i<editButton.length;i++){
    cropName.value=crops[i].name;
    cropPrice.value=crops[i].price;
    editIndex=i;
+  
+  // update button 
+   if(confirm("Are you want to edit this crop ?")){
+  btn.innerHTML = `
+         <i class="fa-solid fa-pen"></i>
+    Update Price
+    `;
+   }
 
    // autoscroll
    priceForm.scrollIntoView({
@@ -255,6 +263,13 @@ if(btn){
 
         // reset edit mode
         editIndex = -1;
+
+         // Change button back
+    btn.innerHTML = `
+        <i class="fa-solid fa-plus"></i>
+        Add Price
+    `;
+
       }
 
     // Save updated array
