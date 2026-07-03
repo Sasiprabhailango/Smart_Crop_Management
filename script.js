@@ -161,27 +161,27 @@ let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
  let editIndex = -1;
 
 // Display saved crops when the page loads
-function displayCrops() {
+function displayCrops(list) {
    // clear old list
   priceList.innerHTML="";
  
   // display every crops
-  for(let i=0;i<crops.length;i++){
+  for(let i=0;i<list.length;i++){
     // create a card
     priceList.innerHTML += `
     <div class="price-card">
       <div class="crop-info">
-        <h3>${crops[i].name}</h3>
-        <p> ₹${crops[i].price}</p>
+        <h3>${list[i].name}</h3>
+        <p> ₹${list[i].price}</p>
       </div>
 
       <div class="button-group">
-         <button class="edit-button" data-index="${i}">
+         <button class="edit-button" data-index="${list[i].originalIndex}">
             <i class="fa-solid fa-pen-to-square"></i>
             Edit
          </button>
 
-        <button class="del-button" data-index="${i}">
+        <button class="del-button" data-index="${list[i].originalIndex}">
          <i class="fa-solid fa-trash"></i>
          Delete
         </button>
@@ -203,7 +203,7 @@ for(let i=0;i<deleteButton.length;i++){
 
        
      localStorage.setItem("CropName & price",JSON.stringify(crops));
-     displayCrops();    
+     displayCrops(crops);    
      }
   });
 }
@@ -213,9 +213,13 @@ const editButton = document.querySelectorAll(".edit-button");
 const priceForm = document.getElementById("priceForm");
 for(let i=0;i<editButton.length;i++){
   editButton[i].addEventListener("click",() =>{
-   cropName.value=crops[i].name;
-   cropPrice.value=crops[i].price;
-   editIndex=i;
+  
+      // Get the ORIGINAL index from data-index
+    const index = editButton[i].dataset.index;
+
+    cropName.value = crops[index].name;
+   cropPrice.value = crops[index].price;
+   editIndex = index;
   
   // update button 
    if(confirm("Are you want to edit this crop ?")){
@@ -237,7 +241,7 @@ for(let i=0;i<editButton.length;i++){
 }
 
 
-displayCrops();
+displayCrops(crops);
 if(btn){
     btn.addEventListener("click",() =>{
 
@@ -282,6 +286,35 @@ if(btn){
       cropName.value = "";
       cropPrice.value = "";
 
-      displayCrops();
+      displayCrops(crops);
     });
 }
+
+// search box 
+ 
+const searchCrop = document.getElementById("searchCrop");
+
+searchCrop.addEventListener("input",() =>{
+    // console.log(searchCrop.value);
+
+// new Array for index store
+
+     let newArr = crops.map((crop,index) => {
+    return {
+        originalIndex: index,
+        name: crop.name,
+        price: crop.price
+    };
+  });
+    // use filter
+
+    let filtered = newArr.filter((sc) =>{
+      return (
+        sc.name.toLowerCase().includes(searchCrop.value.toLowerCase())
+      );
+    });
+   //   console.log(filtered); 
+  displayCrops(filtered);
+
+
+});

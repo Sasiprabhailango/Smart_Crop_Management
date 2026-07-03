@@ -296,3 +296,16 @@ button i{
 .recent-updates th:last-child{
     text-align:right;
 }
+.search-box input{
+    width:100%;
+    padding:14px 18px;
+    border:2px solid #dcdcdc;
+    border-radius:10px;
+    font-size:18px;
+    outline:none;
+    transition:0.3s;
+}
+.search-box input:focus{
+    border-color:green;
+    box-shadow:0 0 8px rgba(0,128,0,0.2);
+}
