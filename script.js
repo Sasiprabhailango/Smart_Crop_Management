@@ -172,7 +172,7 @@ function displayCrops(list) {
     <div class="price-card">
       <div class="crop-info">
         <h3>${list[i].name}</h3>
-        <p> ₹${list[i].price}</p>
+        <p> ₹${Number(list[i].price).toLocaleString("en-in")}</p>
       </div>
 
       <div class="button-group">
@@ -250,7 +250,7 @@ if(btn){
           return;
        }
 
-
+        
     
         // Create object
      const crop = {
@@ -273,7 +273,7 @@ if(btn){
         <i class="fa-solid fa-plus"></i>
         Add Price
     `;
-
+           
       }
 
     // Save updated array
@@ -285,8 +285,20 @@ if(btn){
      // Clear inputs
       cropName.value = "";
       cropPrice.value = "";
+             
+      
+     // autoscroll
+     priceForm.scrollIntoView({
+      behavior: "smooth",
+      block :"start"
+     });
+
+     
 
       displayCrops(crops);
+
+       // Move cursor back to Crop Name
+      cropName.focus();
     });
 }
 
@@ -317,4 +329,49 @@ searchCrop.addEventListener("input",() =>{
   displayCrops(filtered);
 
 
+});
+
+
+// sort by 
+
+const sortCrop = document.getElementById("sortCrop");
+
+sortCrop.addEventListener("change",() =>{
+ // console.log(sortCrop.value)
+
+ let sorted =  crops.map((crop,index) => {
+    return {
+        originalIndex: index,
+        name: crop.name,
+        price: crop.price
+    };
+  });
+ // low to high
+if(sortCrop.value === "low-high"){
+  sorted.sort((a,b) =>{
+    return Number(a.price) - Number(b.price);
+  })
+}
+
+// high to low 
+ else if(sortCrop.value === "high-low"){
+  sorted.sort((a,b) =>{
+    return Number(b.price) - Number(a.price);
+  })
+}
+
+// a-z
+else if(sortCrop.value === "az"){
+  sorted.sort((a,b) =>{
+    return a.name.localeCompare(b.name);
+  })
+}
+
+// z-a
+else if(sortCrop.value === "za"){
+  sorted.sort((a,b) =>{
+    return b.name.localeCompare(a.name);
+  })
+}
+displayCrops(sorted);
 });

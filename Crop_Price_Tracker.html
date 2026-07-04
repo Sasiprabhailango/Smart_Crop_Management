@@ -54,7 +54,16 @@
        </div>
        <div class="search-box">
         <input type="text" id="searchCrop" placeholder="🔍 Search Crop..">
-
+       </div>
+       <div class="sort-container">
+        <label for="sortCrop"> Sort By:</label>
+        <select id="sortCrop">
+          <option value="Default">Default</option>
+          <option value="low-high">Price : Low -> High</option>
+          <option value="high-low">Price : High -> Low</option>
+          <option value="az">Name : A -> Z</option>
+          <option value="za">Name : Z -> A</option>
+          </select>
        </div>
        <h2>Saved Crop Prices</h2>
      <div id="priceList"></div>

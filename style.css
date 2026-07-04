@@ -309,3 +309,16 @@ button i{
     border-color:green;
     box-shadow:0 0 8px rgba(0,128,0,0.2);
 }
+.sort-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.sort-container select{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    cursor:pointer;
+}
