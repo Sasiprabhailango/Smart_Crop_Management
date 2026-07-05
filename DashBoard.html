@@ -67,6 +67,22 @@
                 <p id="highestPrice">0</p>
               </div>
 
+              <div class="card red-card">
+                <h3>
+                  <i class="fa-solid fa-arrow-trend-down"></i>
+                  Lowest Price
+                </h3>
+                <p id="lowestPrice">0</p>
+              </div>
+              
+              <div class="card brown-card">
+                <h3>
+                  <i class="fa-solid fa-sack-dollar"></i>
+                  Total Market value
+                </h3>
+                <p id="totalPrice">0</p>
+              </div>
+
               <div class="card purple-card">
                 <h3>
                   <i class="fa-solid fa-chart-column"></i>
@@ -74,7 +90,17 @@
                 </h3>
                 <p id="averagePrice">0</p>
               </div>
+
         </div>    
+
+        <div class="chart-container">
+         <h2>
+          <i class="fa-solid fa-chart-bar"></i>
+          Crop Price Comparison
+        </h2>
+
+        <canvas id="priceChart"></canvas>
+       </div>
 
         <div class="recent-updates">
           <h2>
@@ -97,6 +123,7 @@
 
         </div>
    </div> 
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script src="dashboard.js"></script>
 </body>
 </html>
