@@ -68,17 +68,103 @@ averagePrice.textContent = "₹" + Number(average).toLocaleString("en-in");
 
 // piechart
 
-const ctx = document.getElementById("priceChart");
-
 let cropName = [];
 let cropPrice = [];
 
 for(let i =0;i<crops.length;i++){
     cropName.push(crops[i].name);
-    cropPrice.push(crops[i].price);
+    cropPrice.push(Number(crops[i].price));
 }
 console.log(cropName);
 console.log(cropPrice);
+
+const ctx = document.getElementById("priceChart");
+
+let chart ;
+
+// function for chart
+
+function drawChart(type) {
+ chart = new Chart(ctx, {
+    type: type,
+
+    data: {
+        labels: cropName,
+
+        datasets: [{
+            label: "Crop Price (₹)",
+            data: cropPrice,
+          backgroundColor: [
+                             "#2E7D32",
+                             "#388E3C",
+                             "#43A047", 
+                             "#4CAF50",
+                             "#66BB6A",
+                             "#81C784",
+                             "#A5D6A7",
+                             "#8BC34A",
+                             "#9CCC65",
+                             "#AED581",
+                             "#C0CA33",
+                             "#D4E157",
+                             "#FFB300",
+                             "#FF9800",
+                             "#FB8C00",
+                             "#6D4C41",
+                             "#8D6E63"
+                            ],
+            borderColor: "rgb(34, 197, 94)",
+            borderWidth: 2
+        }]
+    },
+    
+    options: {
+        responsive: true,
+
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+}
+
+drawChart("bar");
+
+const chartSelect = document.getElementById("chartSelect");
+
+chartSelect.addEventListener("change",() =>{
+    if(chart){
+        chart.destroy();
+    }
+    drawChart(chartSelect.value);
+})
+
+
+// top crops
+
+const topCropList = document.getElementById("topCropList");
+
+let  topCrops = [...crops];
+
+topCrops.sort((a,b) =>{
+    return Number(b.price) - Number(a.price);
+  })
+let  topFive = topCrops.slice(0,5);
+topCropList.innerHTML = "";
+
+for(let i=0;i<topFive.length;i++){
+         topCropList.innerHTML += `
+    <p>${topFive[i].name} - ₹${topFive[i].price}</p>
+`;
+}
 
 // recent list 
 

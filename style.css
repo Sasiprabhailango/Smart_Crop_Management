@@ -354,3 +354,24 @@ button i{
     margin-bottom:20px;
     color:green;
 }
+.chart-section h2{
+    color:#2e7d32;
+}
+.chart-section{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+}
+.chart-left{
+    flex:3;
+}
+
+.chart-right{
+    flex:1;
+    background:#fff;
+    padding:20px;
+    margin-top: 30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    height: 500px;
+}
