@@ -383,7 +383,22 @@ searchCrop.addEventListener("input",() =>{
       );
     });
    //   console.log(filtered); 
-  displayCrops(filtered);
+  if (filtered.length === 0) {
+
+    priceList.innerHTML = `
+        <div class="price-card" style="justify-content:center;">
+            <div style="text-align:center;">
+                <h3>🔍 No crops found</h3>
+                <p>Try another crop name.</p>
+            </div>
+        </div>
+    `;
+
+} else {
+
+    displayCrops(filtered);
+
+}
 
 
 });
