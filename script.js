@@ -157,11 +157,32 @@ const btn = document.getElementById("btn");
 // Get data from Local Storage
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
+console.log(crops);
+console.log(crops.length);
+
+for(let i = 0; i < crops.length; i++){
+
+    if(!crops[i].updatedAt){
+        crops[i].updatedAt = new Date().toISOString();
+    }
+
+}
+
+localStorage.setItem("CropName & price", JSON.stringify(crops));
+
 // edit variable
  let editIndex = -1;
 
 // Display saved crops when the page loads
 function displayCrops(list) {
+
+  // added a original index to crops
+
+    list = list.map((crop, index) => ({
+        ...crop,
+        originalIndex: crop.originalIndex ?? index
+    }));
+
    // clear old list
   priceList.innerHTML="";
  
@@ -245,17 +266,53 @@ displayCrops(crops);
 if(btn){
     btn.addEventListener("click",() =>{
 
-      if(cropName.value.trim() === "" || cropPrice.value.trim() === ""){
-            alert("Please the crop name and price ");
+      if(cropName.value.trim() === "" && cropPrice.value.trim() === ""){
+            alert("Please  enter the crop name and price ");
           return;
        }
+      else if(!(cropName.value.trim() === "") && cropPrice.value.trim() === ""){
+            alert("Please  enter the   price ");
+          return;
+       }
+       else if(cropName.value.trim() === "" && !(cropPrice.value.trim() === "")){
+            alert("Please  enter the  crop name ");
+          return;
+       }
+        // check whether the crop already exists
 
-        
+        let existingIndex = crops.findIndex((crop)=>{
+            return crop.name.toLowerCase() === cropName.value.toLowerCase();
+        });
+        if(editIndex === -1 && existingIndex !== -1 ){
+          if(confirm(`${cropName.value } already exists.\n\n Do you want to update this price?`))
+          {
+
+            editIndex = existingIndex;
+            cropName.value = crops[existingIndex].name;
+            cropPrice.value = crops[existingIndex].price;
+
+
+          // update btn
+            btn.innerHTML = `
+                <i class="fa-solid fa-pen"></i>
+                Update Price
+              `;
+
+            priceForm.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+            });
+
+            cropPrice.focus();
+          }
+          return;
+        }
     
         // Create object
      const crop = {
        name:cropName.value,
-       price:cropPrice.value
+       price:cropPrice.value,
+       updatedAt: new Date().toISOString()
      };
      if(editIndex === -1)
       {

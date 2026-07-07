@@ -18,7 +18,8 @@ priceEntries.textContent = crops.length;
 
  let highest =0;
  let highestCrop = "";
-for(let i =0;i<crops.length;i++){
+ if(crops.length>0){
+   for(let i =0;i<crops.length;i++){
    // console.log(crops);
      if (Number(crops[i].price) > highest) {
 
@@ -26,17 +27,23 @@ for(let i =0;i<crops.length;i++){
         highestCrop = crops[i].name;
 
     }
-
-}
-
-highestPrice.textContent =  highestCrop + " ₹" + Number(highest).toLocaleString("en-in");
-
+   }
+  highestPrice.textContent =  highestCrop + " ₹" + Number(highest).toLocaleString("en-in");
+} 
+ else{
+    highestPrice.textContent = "no Data "
+ }
 //lowest price
 
- let lowest =crops[0].price;
+ let lowest =0;
  let lowestCrop = "";
-for(let i =0;i<crops.length;i++){
+ if(crops.length>0)
+{
+    lowest = Number(crops[0].price);
+    lowestCrop = crops[0].name;
+   for(let i =0;i<crops.length;i++){
    // console.log(crops);
+    
     if (Number(crops[i].price) < lowest) {
 
         lowest = Number(crops[i].price);
@@ -44,8 +51,12 @@ for(let i =0;i<crops.length;i++){
 
     }
 
+   }
+ lowestPrice.textContent =  lowestCrop +" ₹" + Number(lowest).toLocaleString("en-in");
 }
-lowestPrice.textContent =  lowestCrop +" ₹" + Number(lowest).toLocaleString("en-in");
+ else{
+    lowestPrice.textContent = "no Data";
+ }
 
 
 // total value of all crops 
@@ -135,17 +146,33 @@ function drawChart(type) {
     }
 });
 }
+// empty check 
+if(crops.length === 0){
 
-drawChart("bar");
+    document.querySelector(".chart-container").innerHTML = `
+        <h2>
+            <i class="fa-solid fa-chart-simple"></i>
+            Crop Price Comparison
+        </h2>
 
-const chartSelect = document.getElementById("chartSelect");
+        <p style="text-align:center;color:gray;padding:40px;">
+            📊 Add crops to view the price comparison chart.
+        </p>
+    `;
 
-chartSelect.addEventListener("change",() =>{
+}
+else{
+ drawChart("bar");
+
+ const chartSelect = document.getElementById("chartSelect");
+
+ chartSelect.addEventListener("change",() =>{
     if(chart){
         chart.destroy();
     }
     drawChart(chartSelect.value);
-})
+ })
+}
 
 
 // top crops
@@ -160,21 +187,88 @@ topCrops.sort((a,b) =>{
 let  topFive = topCrops.slice(0,5);
 topCropList.innerHTML = "";
 
-for(let i=0;i<topFive.length;i++){
+// empty check 
+if(topFive.length === 0){
+
+    topCropList.innerHTML = `
+        <p style="text-align:center;color:gray;">
+            🌾 No crop data available.
+        </p>
+    `;
+
+}
+else{
+  let medal ="";
+
+  for(let i=0;i<topFive.length;i++){
+    
+    if(i === 0){
+        medal = "🥇";
+    }
+
+    else if(i === 1){
+        medal = "🥈";
+    }
+    else if(i === 2){
+        medal = "🥉";
+    }
+    else {
+        medal = (i+1) +".";
+    }
+
          topCropList.innerHTML += `
-    <p>${topFive[i].name} - ₹${topFive[i].price}</p>
+         <div class="top-card">
+           <p class="medal"> ${medal}</p>
+           <p class ="crop-name"> ${topFive[i].name}</p>
+           <p class = "crop-price">  ₹ ${Number(topFive[i].price).toLocaleString("en-in")}</p>
+         </div>
 `;
+}
 }
 
 // recent list 
 
 
 recentList.innerHTML = "";
-for(let i=0;i<crops.length;i++){
+
+// recent 5 crops 
+let recentCrops = [...crops];
+recentCrops.sort((a,b) =>{
+    return new Date(b.updatedAt) - new Date(a.updatedAt);
+});
+
+let recentFive = recentCrops.slice(0,5);
+console.log(recentFive); 
+
+// chage the time format 
+function formatDate(dateString){
+
+    return new Date(dateString).toLocaleString("en-IN",{
+        dateStyle:"short",
+        timeStyle:"short"
+    });
+
+}
+// empty check 
+if(recentFive.length === 0){
+
+    recentList.innerHTML = `
+        <tr>
+            <td colspan="3" style="text-align:center; padding:20px; color:gray;">
+                📋 No recent price updates available.
+            </td>
+        </tr>
+    `;
+
+}
+else{
+   for(let i=0;i<recentFive.length;i++){
     recentList.innerHTML+=`
     <tr>
-       <td>${crops[i].name}</td>
-       <td>₹${Number(crops[i].price).toLocaleString("en-in")}</td>
+       <td>${recentFive[i].name}</td>
+       <td>₹${Number(recentFive[i].price).toLocaleString("en-in")}</td>
+       <td>${formatDate(recentFive[i].updatedAt)}</td>
     </tr>
     `
+}
 }

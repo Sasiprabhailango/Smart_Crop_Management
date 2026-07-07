@@ -373,5 +373,44 @@ button i{
     margin-top: 30px;
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,.1);
-    height: 500px;
+    
+}
+
+.top-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:8px 12px;
+    margin:8px;
+    min-height: 70px;
+    width: 300px;
+    background:#f9f9f9;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.top-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+
+}
+
+.medal{
+    width:40px;
+}
+
+.crop-name{
+    flex:1;
+    margin-left:12px;
+}
+
+.crop-price{
+    color:green;
 }
