@@ -52,7 +52,7 @@ priceEntries.textContent = crops.length;
     }
 
    }
- lowestPrice.textContent =  lowestCrop +" ₹" + Number(lowest).toLocaleString("en-in");
+  lowestPrice.textContent =  lowestCrop + " ₹" + Number(lowest).toLocaleString("en-in");
 }
  else{
     lowestPrice.textContent = "no Data";
