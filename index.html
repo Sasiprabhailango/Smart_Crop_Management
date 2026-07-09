@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-<body>
+<body class="home-page">
 
     <nav>
         <div class="logo">
@@ -32,34 +32,44 @@
         </div>
     </nav>
     <div class="container">
+       <section class="hero">
+            <h1>Smart Crop Management</h1>
+            <p class="home-subtitle">
+               Helping farmers manage crops smarter with crop care, market price tracking and farm analytics.
+            </p>
 
-       <h1>🌾Smart Crop Management</h1>
-       <p class="home-subtitle">
-            Manage your crops, track prices and monitor farm insights all from one place.
-       </p>
-       <div class="home-features">
+            <a href="#features" class="hero-btn">
+              Explore Features
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+       </section>
+
+       <div class="home-features" id="features">
            <div class="home-card crop-card">
               <i class="fa-solid fa-seedling "></i>
               <h3>Crop care Assistant</h3>
               <p>Get crop care recommendations,fertilizer and harvesting details.</p>
-              <a href="Crop_care_Assistant.html">
-                 <button>Explore →</button>
-              </a> 
+              <a href="Crop_care_Assistant.html" class="hero-card-btn">
+                      Explore 
+                      <i class="fa-solid fa-arrow-right"></i>
+               </a>
             </div>
             <div class="home-card price-card-home">
               <i class="fa-solid fa-sack-dollar"></i>
               <h3> Crop Price Tracker</h3>
               <p>Add, update and manage crop market prices easily.</p>
-              <a href="Crop_Price_Tracker.html">
-                  <button>Explore →</button>
+              <a href="Crop_Price_Tracker.html" class="hero-card-btn">
+                  Explore 
+                  <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
             <div class="home-card dashboard-card">
               <i class="fa-solid fa-chart-line"></i>
               <h3>DashBoard</h3>
               <p>View crop insights, price comparisons and recent updates.</p>
-              <a href="DashBoard.html">
-                 <button>Explore →</button>
+              <a href="DashBoard.html" class="hero-card-btn">
+                  Explore 
+                  <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
        </div>

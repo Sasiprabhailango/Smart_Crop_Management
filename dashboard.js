@@ -8,6 +8,7 @@ const recentList = document.getElementById("recentList");
 const totalPrice = document.getElementById("totalPrice");
 
 
+
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
 totalCrops.textContent = crops.length;
@@ -28,7 +29,8 @@ priceEntries.textContent = crops.length;
 
     }
    }
-  highestPrice.textContent =  highestCrop + " ₹" + Number(highest).toLocaleString("en-in");
+   document.getElementById("highestCrop").textContent = highestCrop;
+  highestPrice.textContent = " ₹" + Number(highest).toLocaleString("en-in");
 } 
  else{
     highestPrice.textContent = "no Data "
@@ -50,9 +52,9 @@ priceEntries.textContent = crops.length;
         lowestCrop = crops[i].name;
 
     }
-
    }
-  lowestPrice.textContent =  lowestCrop + " ₹" + Number(lowest).toLocaleString("en-in");
+   document.getElementById("lowestCrop").textContent = lowestCrop;
+  lowestPrice.textContent = " ₹" + Number(lowest).toLocaleString("en-in");
 }
  else{
     lowestPrice.textContent = "no Data";

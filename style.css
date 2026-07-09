@@ -1,9 +1,47 @@
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f7faf8;
+   
+   
 
 }
+.home-page{
+     background:
+    linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,.2)),
+    url(images/home-bg.jpeg);
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+.crop-page{
+    background: 
+    linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,.2)),
+    url(images/crop-bg.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.price-page{
+    background: 
+    linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),
+    url(images/price-bg.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.dashboard-page{
+     background: 
+    linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.4)),
+    url(images/dashboard-bg.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
 .logo{
     font-size:32px;
     font-weight:bold;
@@ -47,6 +85,7 @@ nav a i{
     max-width:1400px;
     margin:50px auto;
     text-align:center;
+   
 }
 h1{
     color:green;
@@ -80,11 +119,11 @@ h1{
     transition:.3s;
     cursor:pointer;
 }
-.home-card i{
+/* .home-card i{
     font-size:60px;
     color:#2e7d32;
     margin-bottom:20px;
-}
+} */
 .home-card h3{
     font-size:24px;
     margin:15px 0;
