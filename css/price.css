@@ -1,0 +1,131 @@
+.price-page{
+    background: 
+    linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),
+    url("../images/price-bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.price-form{
+    background: white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.price-form label{
+    display:block;
+    text-align:left;
+    margin:15px 0 8px;
+    font-weight:bold;
+}
+.price-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.3s;
+}
+.price-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+.crop-info h3{
+    margin:0;
+    font-size:24px;
+}
+
+.crop-info p{
+    margin-top:8px;
+    color:green;
+    font-weight:bold;
+    font-size:18px;
+}
+.button-group{
+    display:flex;
+    gap:15px;
+}
+.search-box input{
+    width:100%;
+    padding:14px 18px;
+    border:2px solid #dcdcdc;
+    border-radius:10px;
+    font-size:18px;
+    outline:none;
+    transition:0.3s;
+}
+.search-box input:focus{
+    border-color:rgb(0, 128, 0);
+    box-shadow:0 0 8px rgba(0,128,0,0.2);
+}
+.sort-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.sort-container select{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    cursor:pointer;
+}
+.add-button{
+    margin-top:20px;
+    width:100%;
+    background:green;
+    color:white;
+    font-size:18px;
+}
+
+.add-button:hover{
+    background:#0a8a0a;
+}
+
+.del-button{
+    background:#ef4444;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+}
+.edit-button{
+    background:#2d8cff;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+}
+
+.edit-button:hover{
+    background-color: #1976D2;
+}
+
+.edit-button,
+.del-button,
+.add-button{
+
+    transition:.3s;
+}
+
+.edit-button:hover,
+.del-button:hover,
+.add-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}
+

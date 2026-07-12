@@ -1,0 +1,136 @@
+.crop-page{
+    background: 
+    linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,.2)),
+    url("../images/crop-bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#result{
+
+    width:100%;
+    min-height:700px;
+    margin:30px auto;
+    padding:30px;
+    display:none;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    border-radius:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+    position:relative;
+    overflow:hidden;
+}
+#result::before{
+
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.4);
+
+}
+#result>*{
+
+    position:relative;
+    z-index:1;
+
+}
+#result p{
+    margin: 12px 0;
+}
+
+#cropImage{
+    width:300px;
+    height:220px;
+    object-fit:cover;
+
+    display:block;
+    margin:30px auto;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+.info-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:20px;
+
+}
+
+.info-card{
+
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    transition:.3s;
+}
+.info-card:hover{
+
+    transform:translateY(-6px);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+.info-card h3{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+}
+.info-card p{
+
+    font-size:18px;
+
+    color:#444;
+}
+
+.harvest-card{
+    grid-column: 1 / 3;   /* Takes both columns */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.harvest-icon{
+    width: 45px;
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+.harvest-card h3{
+    margin: 5px 0;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.harvest-card p{
+    margin-top: 8px;
+    font-size: 1.3rem;
+}
+.fa-droplet{
+    color:#2196F3;
+}
+
+.fa-seedling{
+    color:#43A047;
+}
+
+.fa-mountain{
+    color:#8D6E63;
+}
+
+.fa-virus{
+    color:#E53935;
+}

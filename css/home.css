@@ -1,0 +1,95 @@
+.home-page{
+     background:
+    linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,.2)),
+    url("../images/home-bg.jpeg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:50px auto;
+    text-align:center;
+
+   
+}
+
+h1{
+    color:green;
+    font-size:56px;
+    margin-bottom:20px;
+}
+.home-subtitle{
+    font-size:22px;
+    color:#666;
+    margin-bottom:60px;
+}
+
+.home-features{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+    margin:50px auto 0;
+}
+.home-card{
+    background:#fff;
+    border-radius:18px;
+    padding: 30px;
+    max-width:360px;
+    margin:auto;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+}
+.home-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+.home-card h3{
+    font-size:24px;
+    margin:15px 0;
+    color:#222;
+}
+.home-card p{
+    color:#666;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+.crop-card{
+    border-top:5px solid #2e7d32;
+}
+
+.price-card-home{
+    border-top:5px solid #1976d2;
+
+}
+.dashboard-card{
+    border-top:5px solid #fb8c00;
+}
+.home-card button{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.home-card button:hover{
+    background:#1b5e20;
+    transform:scale(1.05);
+}
+
+/* feature gero cards */
