@@ -71,12 +71,12 @@ for(let i=0;i<deleteButton.length;i++){
        
      const index = deleteButton[i].dataset.index;
      // confirm 
-     if(confirm("Are you want to delete this crop ?")){
+     if(confirm(`Delete ${crops[index].name }\n\nPrice: ${crops[index].price}?\n\nThis action cannot be undone.`)){
      crops.splice(index,1);
 
        
      localStorage.setItem("CropName & price",JSON.stringify(crops));
-     displayCrops(crops);    
+    sortCrop.dispatchEvent(new Event("change")); 
      }
   });
 }
@@ -133,7 +133,7 @@ if(btn){
         // check whether the crop already exists
 
         let existingIndex = crops.findIndex((crop)=>{
-            return crop.name.toLowerCase() === cropName.value.toLowerCase();
+            return crop.name.trim().toLowerCase() === cropName.value.trim().toLowerCase();
         });
         if(editIndex === -1 && existingIndex !== -1 ){
           if(confirm(`${cropName.value } already exists.\n\n Do you want to update this price?`))
@@ -157,13 +157,25 @@ if(btn){
 
             cropPrice.focus();
           }
+          else{
+            cropName.value="";
+            cropPrice.value="";
+          }
           return;
+        }
+        
+        // check crop price negative or not 
+        if (isNaN(cropPrice.value) || Number(cropPrice.value) <= 0) {
+               alert("Enter a valid price.");
+               cropPrice.focus();
+        return;
         }
     
         // Create object
      const crop = {
-       name:cropName.value,
-       price:cropPrice.value,
+       name:cropName.value.trim().charAt(0).toUpperCase() +
+            cropName.value.trim().slice(1).toLowerCase(),
+       price:cropPrice.value.trim(),
        updatedAt: new Date().toISOString()
      };
      if(editIndex === -1)
@@ -204,8 +216,7 @@ if(btn){
 
      
 
-      displayCrops(crops);
-
+      sortCrop.dispatchEvent(new Event("change"));
        // Move cursor back to Crop Name
       cropName.focus();
     });
@@ -262,6 +273,9 @@ const sortCrop = document.getElementById("sortCrop");
 
 sortCrop.addEventListener("change",() =>{
  // console.log(sortCrop.value)
+ 
+ // clear the search
+ searchCrop.value = "";
 
  let sorted =  crops.map((crop,index) => {
     return {
