@@ -128,4 +128,8 @@
     box-shadow:0 8px 20px rgba(0,0,0,.2);
 
 }
-
+#cancelBtn{
+    display:none;
+    background:#ef4444;
+    color:white;
+}

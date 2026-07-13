@@ -5,7 +5,7 @@ const cropName = document.getElementById("cropName");
 const cropPrice = document.getElementById("cropPrice");
 const priceList = document.getElementById("priceList");
 const btn = document.getElementById("btn");
-
+const cancelBtn = document.getElementById("cancelBtn");
 // Get data from Local Storage
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
@@ -46,6 +46,7 @@ function displayCrops(list) {
       <div class="crop-info">
         <h3>${list[i].name}</h3>
         <p> ₹${Number(list[i].price).toLocaleString("en-in")}</p>
+
       </div>
 
       <div class="button-group">
@@ -77,6 +78,7 @@ for(let i=0;i<deleteButton.length;i++){
        
      localStorage.setItem("CropName & price",JSON.stringify(crops));
     sortCrop.dispatchEvent(new Event("change")); 
+      alert("🗑 Crop deleted successfully!");
      }
   });
 }
@@ -95,11 +97,14 @@ for(let i=0;i<editButton.length;i++){
    editIndex = index;
   
   // update button 
-   if(confirm("Are you want to edit this crop ?")){
+   if(confirm("Do you want to edit this crop ?")){
   btn.innerHTML = `
          <i class="fa-solid fa-pen"></i>
     Update Price
     `;
+
+    // cancel btn
+    cancelBtn.style.display = "block";  
    }
 
    // autoscroll
@@ -150,6 +155,7 @@ if(btn){
                 Update Price
               `;
 
+           
             priceForm.scrollIntoView({
                   behavior: "smooth",
                   block: "start"
@@ -164,11 +170,24 @@ if(btn){
           return;
         }
         
+        // check crop name only on alphabet
+        if(!/^[a-zA-Z]+$/.test(cropName.value.trim())){
+          alert("Crop name should contain only letters.")
+          cropName.focus();
+          return;
+        }
+        
+         
         // check crop price negative or not 
         if (isNaN(cropPrice.value) || Number(cropPrice.value) <= 0) {
                alert("Enter a valid price.");
                cropPrice.focus();
-        return;
+          return;
+        }
+        if(Number(cropPrice.value) > 1000000){
+              alert("Price is too large.");
+              cropPrice.focus();
+           return;
         }
     
         // Create object
@@ -176,26 +195,35 @@ if(btn){
        name:cropName.value.trim().charAt(0).toUpperCase() +
             cropName.value.trim().slice(1).toLowerCase(),
        price:cropPrice.value.trim(),
-       updatedAt: new Date().toISOString()
+       updatedAt: new Date().toISOString("en-in")
      };
      if(editIndex === -1)
       {
       // Add to array
         crops.push(crop);
-      }else{
+        alert("✅ Crop added successfully!");
+       
+      }
+      
+      else{
         // update the existing crop 
         crops[editIndex] = crop;
-
+       
+        alert("✏️ Crop updated successfully!");
         // reset edit mode
         editIndex = -1;
 
          // Change button back
-    btn.innerHTML = `
+        btn.innerHTML = `
         <i class="fa-solid fa-plus"></i>
         Add Price
-    `;
+       `;
+
+       // cnacel btn
+       cancelBtn.style.display = "none";
            
       }
+     
 
     // Save updated array
         localStorage.setItem("CropName & price", JSON.stringify(crops));
@@ -206,21 +234,37 @@ if(btn){
      // Clear inputs
       cropName.value = "";
       cropPrice.value = "";
-             
+            
+      // cancel btn 
+      cancelBtn.style.display = "none";
       
      // autoscroll
      priceForm.scrollIntoView({
       behavior: "smooth",
       block :"start"
      });
-
-     
-
       sortCrop.dispatchEvent(new Event("change"));
        // Move cursor back to Crop Name
       cropName.focus();
     });
 }
+// cancel btn 
+cancelBtn.addEventListener("click", () => {
+
+    cropName.value = "";
+    cropPrice.value = "";
+
+    editIndex = -1;
+
+    btn.innerHTML = `
+        <i class="fa-solid fa-plus"></i>
+        Add Price
+    `;
+
+    cancelBtn.style.display = "none";
+
+    cropName.focus();
+});
 
 // search box 
  
