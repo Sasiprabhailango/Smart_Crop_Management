@@ -13,21 +13,39 @@
     max-width:1400px;
     margin:50px auto;
     text-align:center;
-
-   
 }
 
-h1{
+.hero h1{
     color:green;
-    font-size:56px;
-    margin-bottom:20px;
+    font-size:46px;
+    margin-bottom:10px;
 }
-.home-subtitle{
-    font-size:22px;
-    color:#666;
-    margin-bottom:60px;
+.hero-btn button{
+    color: rgb(243, 243, 243);
+    background-color: #2e7d32;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s
 }
-
+.hero-btn button:hover{
+    background-color: #1b5e20;
+    transform: scale(1.05);
+}
+.home-subtitle {
+    font-size:20px;
+    color:#1b5603;
+    margin-bottom:15px;
+}
+.home-description{
+    font-size:18px;
+    /* color:#5dec4a; */
+    /* line-height:1.7; */
+    /* max-width:700px; */
+    margin:0 auto 10px;
+}
 .home-features{
     width:100%;
     display:grid;
@@ -67,15 +85,27 @@ h1{
 .crop-card{
     border-top:5px solid #2e7d32;
 }
-
+.crop-card i{
+    font-size: 50px;
+    /* margin-bottom: 15px; */
+    color: #2e7d32;
+}
 .price-card-home{
     border-top:5px solid #1976d2;
 
 }
+.price-card-home i{
+    font-size: 50px;
+    color: #1976d2;
+}
 .dashboard-card{
     border-top:5px solid #fb8c00;
 }
-.home-card button{
+.dashboard-card i{
+    font-size: 50px;
+    color: #fb8c00;
+}
+.crop-card  button{
     background:#2e7d32;
     color:white;
     border:none;
@@ -87,9 +117,38 @@ h1{
     transition:.3s;
 }
 
-.home-card button:hover{
+.crop-card button:hover{
     background:#1b5e20;
     transform:scale(1.05);
 }
-
+.price-card-home button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+.price-card-home button:hover{
+    background:#2b35fb;
+    transform:scale(1.05);
+}
+.dashboard-card button{
+    background:#ff8c00;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+.dashboard-card button:hover{
+    background:#ff6f00;
+    transform:scale(1.05);
+}
 /* feature gero cards */
