@@ -78,8 +78,26 @@ input{
 }
 
 .crop-container{
-    width: 85%;
-    max-width: 900px;
-    margin: 40px auto;
-    margin-top:40px;
+    width:85%;
+    max-width:900px;
+    margin:40px auto;
+    text-align:center;
+    color:green;
+
+    min-height:80vh;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#1b5e20;
+    color:white;
+    margin-top:60px;
+}
+.footer-bottom{
+    text-align:center;
+    padding:15px;
+    background:#14461a;
+    color:#ddd;
+    font-size:15px;
 }

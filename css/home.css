@@ -42,8 +42,8 @@
 .home-description{
     font-size:18px;
     /* color:#5dec4a; */
-    /* line-height:1.7; */
-    /* max-width:700px; */
+    line-height:1.7;
+    max-width:500px;
     margin:0 auto 10px;
 }
 .home-features{
@@ -87,7 +87,7 @@
 }
 .crop-card i{
     font-size: 50px;
-    /* margin-bottom: 15px; */
+    margin-bottom: 15px;
     color: #2e7d32;
 }
 .price-card-home{
@@ -133,7 +133,7 @@
     transition:.3s;
 }
 .price-card-home button:hover{
-    background:#2b35fb;
+    background:#0f5396;
     transform:scale(1.05);
 }
 .dashboard-card button{
