@@ -77,15 +77,6 @@ input{
     box-sizing:border-box;
 }
 
-.crop-container{
-    width:85%;
-    max-width:900px;
-    margin:40px auto;
-    text-align:center;
-    color:green;
-
-    min-height:80vh;
-}
 
 /* ================= FOOTER ================= */
 

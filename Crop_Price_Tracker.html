@@ -43,38 +43,54 @@
             <i class="fa-solid fa-sack-dollar  fa-lg"></i>
             Crop Price Tracker
         </h1>
-         <div class="price-form" id="priceForm">
-            <label for="cropName">Crop Name</label>
-            <input  type="text" id="cropName" placeholder="Enter the crop name">
+        <div class="tracker-layout">
+            <div class="left-panel">
+               <div class="price-form" id="priceForm">
+                    <label for="cropName">Crop Name</label>
+                    <input  type="text" id="cropName" placeholder="Enter the crop name">
             
-            <label for="cropPrice">Crop Price</label>
-            <input type="number" id="cropPrice" placeholder="Enter the Crop Price">
+                    <label for="cropPrice">Crop Price</label>
+                    <input type="number" id="cropPrice" placeholder="Enter the Crop Price">
            
-            <button id="btn" class="add-button">
-                 <i class="fa-solid fa-plus"></i>
-                 Add Price
-            </button>
+                    <button id="btn" class="add-button">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Price
+                    </button>
 
-           <button type="button" id="cancelBtn" style="display:none;">
-               <i class="fa-solid fa-xmark"></i>
-                 Cancel
-           </button>
+                   <button type="button" id="cancelBtn" style="display:none;">
+                       <i class="fa-solid fa-xmark"></i>
+                       Cancel
+                   </button>
+                </div>
+            </div>
+            <div class="center-panel">
+                <div class="top-actions">
+                    
+                          <div class="search-box">
+                               <input type="text" id="searchCrop" placeholder="🔍 Search Crop..">
+                          </div>
+                          <div class="sort-container">
+                              <label for="sortCrop"> Sort By:</label>
+                             <select id="sortCrop">
+                                <option value="Default">Default</option>
+                                <option value="low-high">Price : Low -> High</option>
+                                <option value="high-low">Price : High -> Low</option>
+                                <option value="az">Name : A -> Z</option>
+                                <option value="za">Name : Z -> A</option>
+                              </select>
+                          </div>
+                    </div>
+                    <h2>Current Prices</h2>
+                   <div id="priceList">
+                   </div>
+            </div>
+       <div class="recent-updates">
+
+           <h2>Recent Updates</h2>
+
        </div>
-       <div class="search-box">
-        <input type="text" id="searchCrop" placeholder="🔍 Search Crop..">
-       </div>
-       <div class="sort-container">
-        <label for="sortCrop"> Sort By:</label>
-        <select id="sortCrop">
-          <option value="Default">Default</option>
-          <option value="low-high">Price : Low -> High</option>
-          <option value="high-low">Price : High -> Low</option>
-          <option value="az">Name : A -> Z</option>
-          <option value="za">Name : Z -> A</option>
-          </select>
-       </div>
-       <h2>Saved Crop Prices</h2>
-     <div id="priceList"></div>
+    </div>
+       
 
 </div>
 
