@@ -1,20 +1,16 @@
   
 const totalCrops = document.getElementById("totalCrops");
-const priceEntries = document.getElementById("priceEntries");
 const highestPrice = document.getElementById("highestPrice");
 const lowestPrice = document.getElementById("lowestPrice");
 const averagePrice = document.getElementById("averagePrice");
 const recentList = document.getElementById("recentList");
-const totalPrice = document.getElementById("totalPrice");
+
 
 
 
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
 totalCrops.textContent = crops.length;
-
-priceEntries.textContent = crops.length;
-
 //highest price
 
  let highest =0;
@@ -59,17 +55,12 @@ priceEntries.textContent = crops.length;
  else{
     lowestPrice.textContent = "no Data";
  }
-
-
-// total value of all crops 
+// average price
 
 let total = 0;
 for(let i = 0;i<crops.length;i++){
     total+=Number(crops[i].price);
 }
-totalPrice.textContent = "₹" + Number(total).toLocaleString("en-in");
-
-// average price
 let average =  0;
 if(crops.length > 0){
     average = (total / crops.length).toFixed(2);
@@ -149,6 +140,7 @@ function drawChart(type) {
 });
 }
 // empty check 
+
 if(crops.length === 0){
 
     document.querySelector(".chart-container").innerHTML = `
@@ -243,17 +235,29 @@ let recentFive = recentCrops.slice(0,5);
 console.log(recentFive); 
 
 // chage the time format 
-function formatDate(dateString){
 
-    return new Date(dateString).toLocaleString("en-IN",{
-        dateStyle:"short",
-        timeStyle:"short"
+// get only date
+function getDate(dateString){
+
+    return new Date(dateString).toLocaleDateString("en-IN",{
+       day:"2-digit",
+       month:"short",
+       year:"numeric"
     });
 
 }
+// for time 
+function getTime(dateString){
+    return new Date(dateString).toLocaleTimeString("en-in",{
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+}
+
 // empty check 
 if(recentFive.length === 0){
 
+   
     recentList.innerHTML = `
         <tr>
             <td colspan="3" style="text-align:center; padding:20px; color:gray;">
@@ -265,11 +269,20 @@ if(recentFive.length === 0){
 }
 else{
    for(let i=0;i<recentFive.length;i++){
+    
+    let status = recentFive[i].status || "Added";
     recentList.innerHTML+=`
     <tr>
        <td>${recentFive[i].name}</td>
        <td>₹${Number(recentFive[i].price).toLocaleString("en-in")}</td>
-       <td>${formatDate(recentFive[i].updatedAt)}</td>
+       <td>${getDate(recentFive[i].updatedAt)}</td>
+       <td>${getTime(recentFive[i].updatedAt)}</td>
+       <td>
+          <span class="${status.toLowerCase()}">
+            ${status}
+          </span>
+       </td>
+       
     </tr>
     `
 }

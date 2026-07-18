@@ -17,6 +17,9 @@ for(let i = 0; i < crops.length; i++){
     if(!crops[i].updatedAt){
         crops[i].updatedAt = new Date().toISOString();
     }
+    if (!crops[i].status) {
+        crops[i].status = "Added";
+    }
 
 }
 
@@ -195,7 +198,8 @@ if(btn){
        name:cropName.value.trim().charAt(0).toUpperCase() +
             cropName.value.trim().slice(1).toLowerCase(),
        price:cropPrice.value.trim(),
-       updatedAt: new Date().toISOString("en-in")
+       updatedAt: new Date().toISOString("en-in"),
+       status: editIndex === -1 ? "Added" :"Updated"
      };
      if(editIndex === -1)
       {
@@ -357,3 +361,6 @@ else if(sortCrop.value === "za"){
 }
 displayCrops(sorted);
 });
+
+ 
+

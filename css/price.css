@@ -20,9 +20,9 @@
 
     display:grid;
 
-    grid-template-columns: 320px 1fr 260px;
+    grid-template-columns: 320px 1fr ;
 
-    gap:25px;
+    gap: 20px;
 
     align-items:start;
 }
@@ -48,6 +48,9 @@
     box-shadow:0 8px 20px rgba(0,0,0,.1);
 
 }
+.center-panel h2{
+    text-align: left  ;
+}
 .top-actions{
 
     display:flex;
@@ -61,19 +64,13 @@
     margin-bottom:25px;
 
 }
-.recent-updates{
-
-    margin-top:25px;
-
+/* .recent-updates-price{
+    margin-top:30px;
     background:white;
-
     border-radius:15px;
-
-    padding:20px;
-
+    padding:25px;
     box-shadow:0 8px 20px rgba(0,0,0,.1);
-
-}
+} */
 .price-form{
     background: white;
     padding:25px;
@@ -103,9 +100,7 @@
 
 display:grid;
 
-grid-template-columns:
-
-repeat(auto-fill,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
 
 gap:20px;
 

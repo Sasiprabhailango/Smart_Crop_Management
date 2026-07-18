@@ -12,7 +12,6 @@ a{
 /* nav bar */
 nav{
     background:white;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
