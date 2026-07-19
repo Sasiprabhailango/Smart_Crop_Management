@@ -8,6 +8,9 @@ const btn = document.getElementById("btn");
 const cancelBtn = document.getElementById("cancelBtn");
 // Get data from Local Storage
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
+// for history
+
+let cropHistory = JSON.parse(localStorage.getItem("cropHistory")) || [];
 
 console.log(crops);
 console.log(crops.length);
@@ -205,13 +208,36 @@ if(btn){
       {
       // Add to array
         crops.push(crop);
+
+           // Save history
+     cropHistory.push({
+        cropName: crop.name,
+        oldPrice: "-",
+        newPrice: crop.price,
+        status: "Added",
+        updatedAt: new Date().toISOString()
+      });
+
         alert("✅ Crop added successfully!");
        
       }
       
       else{
+         
+        // save the old price
+        let oldPrice = crops[editIndex].price;
+
         // update the existing crop 
         crops[editIndex] = crop;
+
+        // push the old price 
+        cropHistory.push({
+          cropName: crop.name,
+          oldPrice: oldPrice,
+          newPrice: crop.price,
+          status: "Updated",
+          updatedAt: new Date().toISOString()
+       });
        
         alert("✏️ Crop updated successfully!");
         // reset edit mode
@@ -231,8 +257,12 @@ if(btn){
 
     // Save updated array
         localStorage.setItem("CropName & price", JSON.stringify(crops));
+
+    // saved the history
+    localStorage.setItem("Crop History",JSON.stringify(cropHistory));
      
         console.log(crops);
+          console.log(cropHistory);
 
 
      // Clear inputs
