@@ -10,7 +10,7 @@ const cancelBtn = document.getElementById("cancelBtn");
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 // for history
 
-let cropHistory = JSON.parse(localStorage.getItem("cropHistory")) || [];
+let cropHistory = JSON.parse(localStorage.getItem("Crop History")) || [];
 
 console.log(crops);
 console.log(crops.length);
@@ -253,16 +253,46 @@ if(btn){
        cancelBtn.style.display = "none";
            
       }
-     
+    
+
+
+      console.log("History before save:", cropHistory);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Save updated array
         localStorage.setItem("CropName & price", JSON.stringify(crops));
 
     // saved the history
     localStorage.setItem("Crop History",JSON.stringify(cropHistory));
-     
+        console.log(cropHistory);
         console.log(crops);
-          console.log(cropHistory);
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("History in localStorage:",
+JSON.parse(localStorage.getItem("Crop History")));
+         
 
 
      // Clear inputs

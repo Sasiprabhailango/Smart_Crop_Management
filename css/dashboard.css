@@ -261,3 +261,23 @@
 .dashboard-header h1{
     margin:0;
 }
+.recent-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.recent-header input{
+    width:280px;
+    padding:10px 15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.recent-header input:focus{
+    border-color:#2e7d32;
+    box-shadow:0 0 5px rgba(46,125,50,.3);
+}

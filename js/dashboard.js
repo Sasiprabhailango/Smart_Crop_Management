@@ -4,11 +4,15 @@ const highestPrice = document.getElementById("highestPrice");
 const lowestPrice = document.getElementById("lowestPrice");
 const averagePrice = document.getElementById("averagePrice");
 const recentList = document.getElementById("recentList");
+const historySearch = document.getElementById("historySearch");
 
 
 
 
 let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
+
+let cropHistory = JSON.parse(localStorage.getItem("Crop History")) || [];
+
 
 totalCrops.textContent = crops.length;
 //highest price
@@ -226,12 +230,12 @@ else{
 recentList.innerHTML = "";
 
 // recent 5 crops 
-let recentCrops = [...crops];
-recentCrops.sort((a,b) =>{
+let recentHistory = [...cropHistory];
+recentHistory.sort((a,b) =>{
     return new Date(b.updatedAt) - new Date(a.updatedAt);
 });
 
-let recentFive = recentCrops.slice(0,5);
+let recentFive = recentHistory.slice(0,5);
 console.log(recentFive); 
 
 // chage the time format 
@@ -254,36 +258,61 @@ function getTime(dateString){
     });
 }
 
+function displayRecentUpdates(data){
+    
+     recentList.innerHTML = "";
 // empty check 
-if(recentFive.length === 0){
+if(data.length === 0){
 
    
     recentList.innerHTML = `
         <tr>
-            <td colspan="3" style="text-align:center; padding:20px; color:gray;">
+            <td colspan="5" style="text-align:center; padding:20px; color:gray;">
                 📋 No recent price updates available.
             </td>
         </tr>
     `;
 
-}
-else{
-   for(let i=0;i<recentFive.length;i++){
+  }
+  else{
+     for(let i=0;i<data.length;i++){
     
-    let status = recentFive[i].status || "Added";
-    recentList.innerHTML+=`
-    <tr>
-       <td>${recentFive[i].name}</td>
-       <td>₹${Number(recentFive[i].price).toLocaleString("en-in")}</td>
-       <td>${getDate(recentFive[i].updatedAt)}</td>
-       <td>${getTime(recentFive[i].updatedAt)}</td>
+      let status = data[i].status || "Added";
+        recentList.innerHTML+=`
+     <tr>
+       <td>${data[i].cropName}</td>
+       <td>₹${Number(data[i].newPrice).toLocaleString("en-in")}</td>
+       <td>${getDate(data[i].updatedAt)}</td>
+       <td>${getTime(data[i].updatedAt)}</td>
        <td>
           <span class="${status.toLowerCase()}">
             ${status}
           </span>
        </td>
        
-    </tr>
+     </tr>
     `
+    }
+  }
 }
-}
+displayRecentUpdates(recentFive);
+
+historySearch.addEventListener("input", () => {
+
+    let searchText = historySearch.value.trim().toLowerCase();
+
+    // If search box is empty, show Recent 5 Updates
+    if(searchText === ""){
+        displayRecentUpdates(recentFive);
+        return;
+    }
+
+    // Find all history of the searched crop
+    let filtered = recentHistory.filter(crop =>
+        crop.cropName.toLowerCase().includes(searchText)
+    );
+
+    // Show searched crop history
+    displayRecentUpdates(filtered);
+
+});
