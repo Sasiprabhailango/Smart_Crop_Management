@@ -222,7 +222,16 @@
 .updated::before{
     content: "🟡";
 }
-
+.deleted{
+    background-color:#f8d7da;
+    color:#dc3545;
+    padding:5px 10px;
+    border-radius:20px;
+    font-weight:bold;
+}
+.deleted::before{
+    content: "🔴";
+}
 .top-btn{
     display:flex;
     gap:15px;

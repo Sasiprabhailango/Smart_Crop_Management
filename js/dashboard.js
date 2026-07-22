@@ -281,7 +281,9 @@ if(data.length === 0){
         recentList.innerHTML+=`
      <tr>
        <td>${data[i].cropName}</td>
-       <td>₹${Number(data[i].newPrice).toLocaleString("en-in")}</td>
+       <td>${data[i].status === "Deleted"
+        ?
+        "-":"₹"+ Number(data[i].newPrice).toLocaleString("en-in")}</td>
        <td>${getDate(data[i].updatedAt)}</td>
        <td>${getTime(data[i].updatedAt)}</td>
        <td>

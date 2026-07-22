@@ -79,10 +79,20 @@ for(let i=0;i<deleteButton.length;i++){
      const index = deleteButton[i].dataset.index;
      // confirm 
      if(confirm(`Delete ${crops[index].name }\n\nPrice: ${crops[index].price}?\n\nThis action cannot be undone.`)){
-     crops.splice(index,1);
+     
+      cropHistory.push({
+    cropName: crops[index].name,
+    oldPrice: crops[index].price,
+    newPrice: "-",
+    status: "Deleted",
+    updatedAt: new Date().toISOString()
+   });   
+     localStorage.setItem("Crop History",JSON.stringify(cropHistory));
+      crops.splice(index,1);
 
        
      localStorage.setItem("CropName & price",JSON.stringify(crops));
+    
     sortCrop.dispatchEvent(new Event("change")); 
       alert("🗑 Crop deleted successfully!");
      }
@@ -253,23 +263,7 @@ if(btn){
        cancelBtn.style.display = "none";
            
       }
-    
-
-
       console.log("History before save:", cropHistory);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // Save updated array
         localStorage.setItem("CropName & price", JSON.stringify(crops));
@@ -280,18 +274,7 @@ if(btn){
         console.log(crops);
 
 
-
-
-
-
-
-
-
-
-
-
-console.log("History in localStorage:",
-JSON.parse(localStorage.getItem("Crop History")));
+      console.log("History in localStorage:",JSON.parse(localStorage.getItem("Crop History")));
          
 
 
