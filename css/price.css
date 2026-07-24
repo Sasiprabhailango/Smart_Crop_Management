@@ -71,6 +71,26 @@
     padding:25px;
     box-shadow:0 8px 20px rgba(0,0,0,.1);
 } */
+ .suggestions{
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    display: none;
+}
+
+.suggestion-item{
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.suggestion-item:hover{
+    background-color: #e8f5e9;
+}
 .price-form{
     background: white;
     padding:25px;

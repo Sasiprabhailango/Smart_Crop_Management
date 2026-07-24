@@ -4,6 +4,27 @@
 const cropName = document.getElementById("cropName");
 const cropPrice = document.getElementById("cropPrice");
 const priceList = document.getElementById("priceList");
+// default crop names
+const cropList = [
+    "Rice",
+    "Wheat",
+    "Corn",
+    "Cotton",
+    "Sugarcane",
+    "Peanut",
+    "Soybean",
+    "Tomato",
+    "Potato",
+    "Onion",
+    "Banana",
+    "Mango",
+    "Coconut",
+    "Cabbage",
+    "Brinjal",
+    "Cauliflower"
+];
+const cropSuggestions = document.getElementById("cropSuggestions");
+
 const btn = document.getElementById("btn");
 const cancelBtn = document.getElementById("cancelBtn");
 // Get data from Local Storage
@@ -136,6 +157,48 @@ for(let i=0;i<editButton.length;i++){
 
 
 displayCrops(crops);
+
+cropName.addEventListener("input", () => {
+
+    let searchText = cropName.value.trim().toLowerCase();
+
+    cropSuggestions.innerHTML = "";
+
+    if (searchText === "") {
+        cropSuggestions.style.display = "none";
+        return;
+    }
+
+    let matches = cropList.filter(crop =>
+        crop.toLowerCase().startsWith(searchText)
+    );
+
+    if (matches.length === 0) {
+        cropSuggestions.style.display = "none";
+        return;
+    }
+
+    cropSuggestions.style.display = "block";
+     
+    matches.forEach(crop => {
+           const div = document.createElement("div");
+           div.classList.add("suggestion-item");
+           div.textContent = crop;
+           
+           div.addEventListener("click", () => {
+           cropName.value = crop;
+           cropSuggestions.innerHTML = "";
+           cropSuggestions.style.display = "none";
+
+            // Move cursor to Price field
+               cropPrice.focus();
+           });
+
+        cropSuggestions.appendChild(div);
+
+      });
+});
+
 if(btn){
     btn.addEventListener("click",() =>{
 
@@ -186,12 +249,12 @@ if(btn){
           return;
         }
         
-        // check crop name only on alphabet
-        if(!/^[a-zA-Z]+$/.test(cropName.value.trim())){
-          alert("Crop name should contain only letters.")
-          cropName.focus();
-          return;
-        }
+       // Check whether the crop is in the predefined list
+        if (!cropList.includes(cropName.value.trim())) {
+                alert("⚠ Please choose a valid crop name from the suggestions.");
+                cropName.focus();
+            return;
+         }
         
          
         // check crop price negative or not 
