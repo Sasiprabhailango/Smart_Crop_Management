@@ -1,0 +1,83 @@
+
+[
+  {
+    "name": "Rice",
+    "price": "2500",
+    "status": "Added"
+  },
+  {
+    "name": "Wheat",
+    "price": "2400",
+    "status": "Added"
+  },
+  {
+    "name": "Corn",
+    "price": "2100",
+    "status": "Added"
+  },
+  {
+    "name": "Cotton",
+    "price": "6800",
+    "status": "Added"
+  },
+  {
+    "name": "Sugarcane",
+    "price": "550",
+    "status": "Added"
+  },
+  {
+    "name": "Peanut",
+    "price": "6100",
+    "status": "Added"
+  },
+  {
+    "name": "Soybean",
+    "price": "4800",
+    "status": "Added"
+  },
+  {
+    "name": "Tomato",
+    "price": "1800",
+    "status": "Added"
+  },
+  {
+    "name": "Potato",
+    "price": "1600",
+    "status": "Added"
+  },
+  {
+    "name": "Onion",
+    "price": "2300",
+    "status": "Added"
+  },
+  {
+    "name": "Banana",
+    "price": "1500",
+    "status": "Added"
+  },
+  {
+    "name": "Mango",
+    "price": "4500",
+    "status": "Added"
+  },
+  {
+    "name": "Coconut",
+    "price": "3000",
+    "status": "Added"
+  },
+  {
+    "name": "Cabbage",
+    "price": "1400",
+    "status": "Added"
+  },
+  {
+    "name": "Brinjal",
+    "price": "2000",
+    "status": "Added"
+  },
+  {
+    "name": "Cauliflower",
+    "price": "1600",
+    "status": "Added"
+  }
+]
