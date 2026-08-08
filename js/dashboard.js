@@ -15,27 +15,59 @@ let cropHistory = JSON.parse(localStorage.getItem("Crop History")) || [];
 
 // local storage
 
- async function loadDefaultData() {
+async function loadDefaultData() {
+
     console.log("loadDefaultData started");
 
+    // Load default crops only if crops are empty
     if (crops.length === 0) {
+
         try {
+
             const response = await fetch("./data/crops.json");
 
-            console.log("Response:", response);
             console.log("Response OK:", response.ok);
 
             const defaultCrops = await response.json();
 
             console.log("Default crops:", defaultCrops);
 
+            crops = defaultCrops;
+
+            localStorage.setItem(
+                "CropName & price",
+                JSON.stringify(crops)
+            );
+
         } catch (error) {
+
             console.error("Error loading crops.json:", error);
+
         }
+    }
+
+    // Create default history if history is empty
+    if (cropHistory.length === 0 && crops.length > 0) {
+
+        cropHistory = crops.map(crop => ({
+            cropName: crop.name,
+            oldPrice: "-",
+            newPrice: crop.price,
+            status: "Added",
+            updatedAt: new Date().toISOString()
+        }));
+
+        localStorage.setItem(
+            "Crop History",
+            JSON.stringify(cropHistory)
+        );
+
+        console.log("Default history created:", cropHistory);
     }
 }
 
 loadDefaultData();
+
 totalCrops.textContent = crops.length;
 //highest price
 
