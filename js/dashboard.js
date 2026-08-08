@@ -13,6 +13,14 @@ let crops = JSON.parse(localStorage.getItem("CropName & price")) || [];
 
 let cropHistory = JSON.parse(localStorage.getItem("Crop History")) || [];
 
+// local storage
+
+  async function loadDefaultData() {
+    console.log("loadDefaultData started");
+}
+
+loadDefaultData();
+
 
 totalCrops.textContent = crops.length;
 //highest price
