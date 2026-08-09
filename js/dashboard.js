@@ -181,7 +181,8 @@ function drawChart(type) {
     },
     
     options: {
-        responsive: true,
+       responsive: true,
+       maintainAspectRatio: false,
 
         plugins: {
             legend: {

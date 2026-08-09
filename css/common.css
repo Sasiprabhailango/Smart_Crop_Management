@@ -16,7 +16,7 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 70px;
+    padding:18px 50px;
 
     box-shadow:0 5px 15px rgba(0,0,0,.08);
 
@@ -25,27 +25,31 @@ nav{
     z-index:1000;
 }
 .logo{
-    font-size:32px;
+    font-size:28px;
     font-weight:bold;
-    color:green;
+    color: #2e7d32;
 }
 .nav-links{
     display:flex;
-    gap:30px;
+    align-items: center;
+    gap:25px;
 }
 nav a{
     color:#333;
     font-weight:600;
-    font-size:17px;
-    transition:.3s;
+    font-size:16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transition: all 0.3s ease;
 }
 nav a:hover{
     color:green;
     transform:translateY(-2px);
 }
 nav a i{
-    margin-right:8px;
-    color:green;
+   color: #2e7d32;
 }
 /* common buttons */
 button{
